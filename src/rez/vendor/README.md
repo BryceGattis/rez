@@ -171,6 +171,19 @@ Upgraded from 1.2 to 1.5 as of Oct 16 2019
 
 <!-- ######################################################### -->
 <tr><td>
+pydantic
+</td><td>
+2.5.3 (Dec 22, 2023)
+</td><td>
+MIT
+</td><td>
+https://github.com/pydantic/pydantic<br>
+
+* No changes from source.
+</td></tr>
+
+<!-- ######################################################### -->
+<tr><td>
 pydot
 </td><td>
 1.4.2.dev0 (Oct 28, 2020)
