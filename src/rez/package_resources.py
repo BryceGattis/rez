@@ -60,13 +60,9 @@ package_rex_keys = (
 # utility schemas
 # ------------------------------------------------------------------------------
 
-class HelpSchema(BaseModel):
 
-
-help_schema = Or(str,  # single help entry
-                 [[str]])  # multiple help entries
-
-_is_late = And(SourceCode, lambda x: hasattr(x, "_late"))
+help_schema = (str | # single help entry
+               List[List[str]])  # multiple help entries
 
 
 def late_bound(schema):
@@ -180,9 +176,6 @@ class PackageBaseSchema(BaseResourceSchema):
     previous_version: Optional[Version]
     previous_revision: Optional[object]
     vcs: Optional[str]
-
-    # arbitrary fields
-    Optional(str):               late_bound(object)
 
 
 package_base_schema_dict = base_resource_schema_dict.copy()
@@ -309,33 +302,30 @@ class PackagePodSchema(BaseResourceSchema):
     plugin_for: Optional[List[str] | SourceCode]
 
     uuid: Optional[str]
-    config: Optional[And(dict, Use(lambda x: create_config(overrides=x)))]
-    Optional('tools'):                  late_bound([str]),
-    Optional('help'):                   late_bound(help_schema),
+    config: Optional[Annotated[dict, AfterValidator(lambda x: create_config(overrides=x))]]
+    tools: Optional[List[str] | SourceCode]
+    help: Optional[help_schema | SourceCode]
 
-    Optional('hashed_variants'):        bool,
+    hashed_variants: Optional[bool]
 
-    Optional('relocatable'):            late_bound(Or(None, bool)),
-    Optional('cachable'):               late_bound(Or(None, bool)),
+    relocatable: Optional[None | bool | SourceCode]
+    cachable: Optional[None | bool | SourceCode]
 
-    Optional('tests'):                  late_bound(tests_schema),
+    tests: Optional[tests_schema | SourceCode]
 
-    Optional('pre_commands'):           _commands_schema,
-    Optional('commands'):               _commands_schema,
-    Optional('post_commands'):          _commands_schema,
-    Optional('pre_build_commands'):     _commands_schema,
-    Optional('pre_test_commands'):      _commands_schema,
+    pre_commands: Optional[_commands_schema]
+    commands: Optional[_commands_schema]
+    post_commands: Optional[_commands_schema]
+    pre_build_commands: Optional[_commands_schema]
+    pre_test_commands: Optional[_commands_schema]
 
-    Optional("timestamp"):              int,
-    Optional('revision'):               object,
-    Optional('changelog'):              large_string_dict,
-    Optional('release_message'):        Or(None, str),
-    Optional('previous_version'):       And(str, Use(Version)),
-    Optional('previous_revision'):      object,
-    Optional('vcs'):                    str,
-
-    # arbitrary keys
-    Optional(str):               late_bound(object)
+    timestamp: Optional[int]
+    revision: Optional[object]
+    changelog: Optional[large_string_dict]
+    release_message: Optional[None | str]
+    previous_version: Optional[Annotated[str, AfterValidator(Version)]]
+    previous_revision: Optional[object]
+    vcs: Optional[str]
 
 
 
