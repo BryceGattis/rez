@@ -251,6 +251,18 @@ Also now required to support py2/3 interoperability.
 
 <!-- ######################################################### -->
 <tr><td>
+typing_extensions
+</td><td>
+4.6.1 (May 23, 2023)
+</td><td>
+PYTHON SOFTWARE FOUNDATION LICENSE VERSION 2
+</td><td>
+https://github.com/python/typing_extensions<br>
+No changes from source.
+</td></tr>
+
+<!-- ######################################################### -->
+<tr><td>
 yaml lib (PyYAML)
 </td><td>
 5.1 (May 30, 2011)
