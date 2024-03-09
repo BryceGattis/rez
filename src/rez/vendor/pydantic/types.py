@@ -30,7 +30,7 @@ from uuid import UUID
 import annotated_types
 from annotated_types import BaseMetadata, MaxLen, MinLen
 from pydantic_core import CoreSchema, PydanticCustomError, core_schema
-from typing_extensions import Annotated, Literal, Protocol, TypeAlias, TypeAliasType, deprecated
+from rez.vendor.typing_extensions.typing_extensions import Annotated, Literal, Protocol, TypeAlias, TypeAliasType, deprecated
 
 from ._internal import (
     _core_utils,
@@ -118,7 +118,7 @@ class Strict(_fields.PydanticMetadata, BaseMetadata):
 
     Example:
         ```python
-        from typing_extensions import Annotated
+        from rez.vendor.typing_extensions.typing_extensions import Annotated
 
         from pydantic.types import Strict
 
@@ -169,7 +169,7 @@ def conint(
 
         === ":white_check_mark: Do this"
             ```py
-            from typing_extensions import Annotated
+            from rez.vendor.typing_extensions.typing_extensions import Annotated
 
             from pydantic import BaseModel, Field
 
@@ -415,7 +415,7 @@ def confloat(
 
         === ":white_check_mark: Do this"
             ```py
-            from typing_extensions import Annotated
+            from rez.vendor.typing_extensions.typing_extensions import Annotated
 
             from pydantic import BaseModel, Field
 
@@ -742,7 +742,7 @@ def constr(
 
         === ":white_check_mark: Do this"
             ```py
-            from typing_extensions import Annotated
+            from rez.vendor.typing_extensions.typing_extensions import Annotated
 
             from pydantic import BaseModel, StringConstraints
 
@@ -1012,7 +1012,7 @@ def condecimal(
             ```py
             from decimal import Decimal
 
-            from typing_extensions import Annotated
+            from rez.vendor.typing_extensions.typing_extensions import Annotated
 
             from pydantic import BaseModel, Field
 
@@ -2100,7 +2100,7 @@ class EncodedBytes:
     `EncodedBytes` needs an encoder that implements `EncoderProtocol` to operate.
 
     ```py
-    from typing_extensions import Annotated
+    from rez.vendor.typing_extensions.typing_extensions import Annotated
 
     from pydantic import BaseModel, EncodedBytes, EncoderProtocol, ValidationError
 
@@ -2197,7 +2197,7 @@ class EncodedStr(EncodedBytes):
     `EncodedStr` needs an encoder that implements `EncoderProtocol` to operate.
 
     ```py
-    from typing_extensions import Annotated
+    from rez.vendor.typing_extensions.typing_extensions import Annotated
 
     from pydantic import BaseModel, EncodedStr, EncoderProtocol, ValidationError
 
@@ -2415,7 +2415,7 @@ class GetPydanticSchema:
     ```python
     from typing import Any
 
-    from typing_extensions import Annotated
+    from rez.vendor.typing_extensions.typing_extensions import Annotated
 
     from pydantic import BaseModel, GetPydanticSchema
 
@@ -2467,7 +2467,7 @@ class Tag:
     ```py
     from typing import Any, Union
 
-    from typing_extensions import Annotated, Literal
+    from rez.vendor.typing_extensions.typing_extensions import Annotated, Literal
 
     from pydantic import BaseModel, Discriminator, Tag
 
@@ -2556,7 +2556,7 @@ class Discriminator:
     ```py
     from typing import Any, Union
 
-    from typing_extensions import Annotated, Literal
+    from rez.vendor.typing_extensions.typing_extensions import Annotated, Literal
 
     from pydantic import BaseModel, Discriminator, Tag
 

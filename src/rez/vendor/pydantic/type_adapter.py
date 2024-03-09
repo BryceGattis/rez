@@ -6,7 +6,7 @@ from dataclasses import is_dataclass
 from typing import TYPE_CHECKING, Any, Dict, Generic, Iterable, Set, TypeVar, Union, cast, overload
 
 from pydantic_core import CoreSchema, SchemaSerializer, SchemaValidator, Some
-from typing_extensions import Literal, is_typeddict
+from rez.vendor.typing_extensions.typing_extensions import Literal, is_typeddict
 
 from pydantic.errors import PydanticUserError
 from pydantic.main import BaseModel

@@ -10,7 +10,7 @@ from typing import (
 )
 
 from pydantic_core import core_schema
-from typing_extensions import (
+from rez.vendor.typing_extensions.typing_extensions import (
     Literal,
     Self,
 )

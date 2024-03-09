@@ -7,7 +7,7 @@ from enum import Enum
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Callable
 
-from typing_extensions import deprecated
+from rez.vendor.typing_extensions.typing_extensions import deprecated
 
 from ..warnings import PydanticDeprecatedSince20
 

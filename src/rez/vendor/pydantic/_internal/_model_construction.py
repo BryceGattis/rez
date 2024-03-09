@@ -11,7 +11,7 @@ from typing import Any, Callable, Generic, Mapping
 
 import typing_extensions
 from pydantic_core import PydanticUndefined, SchemaSerializer
-from typing_extensions import dataclass_transform, deprecated
+from rez.vendor.typing_extensions.typing_extensions import dataclass_transform, deprecated
 
 from ..errors import PydanticUndefinedAnnotation, PydanticUserError
 from ..plugin._schema_validator import create_schema_validator

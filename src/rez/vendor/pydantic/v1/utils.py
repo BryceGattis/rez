@@ -26,7 +26,7 @@ from typing import (
     Union,
 )
 
-from typing_extensions import Annotated
+from rez.vendor.typing_extensions.typing_extensions import Annotated
 
 from .errors import ConfigError
 from .typing import (

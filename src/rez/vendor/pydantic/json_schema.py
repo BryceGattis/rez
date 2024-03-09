@@ -38,7 +38,7 @@ from typing import (
 import pydantic_core
 from pydantic_core import CoreSchema, PydanticOmit, core_schema, to_jsonable_python
 from pydantic_core.core_schema import ComputedField
-from typing_extensions import Annotated, Literal, TypeAlias, assert_never
+from rez.vendor.typing_extensions.typing_extensions import Annotated, Literal, TypeAlias, assert_never
 
 from ._internal import (
     _config,

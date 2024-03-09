@@ -38,7 +38,7 @@ from contextlib import contextmanager
 from functools import wraps
 from typing import TYPE_CHECKING, Any, Callable, ClassVar, Dict, Generator, Optional, Type, TypeVar, Union, overload
 
-from typing_extensions import dataclass_transform
+from rez.vendor.typing_extensions.typing_extensions import dataclass_transform
 
 from .class_validators import gather_all_validators
 from .config import BaseConfig, ConfigDict, Extra, get_config

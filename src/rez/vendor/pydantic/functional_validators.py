@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING, Any, Callable, TypeVar, Union, cast, overload
 
 from pydantic_core import core_schema
 from pydantic_core import core_schema as _core_schema
-from typing_extensions import Annotated, Literal, TypeAlias
+from rez.vendor.typing_extensions.typing_extensions import Annotated, Literal, TypeAlias
 
 from . import GetCoreSchemaHandler as _GetCoreSchemaHandler
 from ._internal import _core_metadata, _decorators, _generics, _internal_dataclass
@@ -18,7 +18,7 @@ from .annotated_handlers import GetCoreSchemaHandler
 from .errors import PydanticUserError
 
 if sys.version_info < (3, 11):
-    from typing_extensions import Protocol
+    from rez.vendor.typing_extensions.typing_extensions import Protocol
 else:
     from typing import Protocol
 
@@ -36,7 +36,7 @@ class AfterValidator:
 
     Example:
         ```py
-        from typing_extensions import Annotated
+        from rez.vendor.typing_extensions.typing_extensions import Annotated
 
         from pydantic import AfterValidator, BaseModel, ValidationError
 
@@ -92,7 +92,7 @@ class BeforeValidator:
 
     Example:
         ```py
-        from typing_extensions import Annotated
+        from rez.vendor.typing_extensions.typing_extensions import Annotated
 
         from pydantic import BaseModel, BeforeValidator
 
@@ -136,7 +136,7 @@ class PlainValidator:
 
     Example:
         ```py
-        from typing_extensions import Annotated
+        from rez.vendor.typing_extensions.typing_extensions import Annotated
 
         from pydantic import BaseModel, PlainValidator
 
@@ -174,7 +174,7 @@ class WrapValidator:
     ```py
     from datetime import datetime
 
-    from typing_extensions import Annotated
+    from rez.vendor.typing_extensions.typing_extensions import Annotated
 
     from pydantic import BaseModel, ValidationError, WrapValidator
 

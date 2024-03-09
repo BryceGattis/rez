@@ -9,7 +9,7 @@ from itertools import islice
 from typing import TYPE_CHECKING, Any, Callable, ClassVar, Generic, Iterable, TypeVar, Union
 
 from pydantic_core import PydanticUndefined, core_schema
-from typing_extensions import Literal, TypeAlias, is_typeddict
+from rez.vendor.typing_extensions.typing_extensions import Literal, TypeAlias, is_typeddict
 
 from ..errors import PydanticUserError
 from ._core_utils import get_type_ref

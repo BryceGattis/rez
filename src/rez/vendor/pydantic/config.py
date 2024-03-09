@@ -3,7 +3,7 @@ from __future__ import annotations as _annotations
 
 from typing import TYPE_CHECKING, Any, Callable, Dict, List, Type, Union
 
-from typing_extensions import Literal, TypeAlias, TypedDict
+from rez.vendor.typing_extensions.typing_extensions import Literal, TypeAlias, TypedDict
 
 from ._migration import getattr_migration
 

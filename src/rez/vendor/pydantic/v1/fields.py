@@ -26,7 +26,7 @@ from typing import (
     Union,
 )
 
-from typing_extensions import Annotated, Final
+from rez.vendor.typing_extensions.typing_extensions import Annotated, Final
 
 from . import errors as errors_
 from .class_validators import Validator, make_generic_validator, prep_validators

@@ -25,7 +25,7 @@ from pydantic_core import (
     Url,
     core_schema,
 )
-from typing_extensions import get_args, get_origin
+from rez.vendor.typing_extensions.typing_extensions import get_args, get_origin
 
 from pydantic.errors import PydanticSchemaGenerationError
 from pydantic.fields import FieldInfo

@@ -2,7 +2,7 @@ import warnings
 from functools import wraps
 from typing import TYPE_CHECKING, Any, Callable, Dict, List, Mapping, Optional, Tuple, Type, TypeVar, Union, overload
 
-from typing_extensions import deprecated
+from rez.vendor.typing_extensions.typing_extensions import deprecated
 
 from .._internal import _config, _typing_extra
 from ..alias_generators import to_pascal

@@ -10,7 +10,7 @@ from types import GeneratorType
 from typing import TYPE_CHECKING, Any, Callable, Dict, Type, Union
 from uuid import UUID
 
-from typing_extensions import deprecated
+from rez.vendor.typing_extensions.typing_extensions import deprecated
 
 from ..color import Color
 from ..networks import NameEmail

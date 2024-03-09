@@ -6,7 +6,7 @@ import sys
 import types
 from typing import TYPE_CHECKING, Any, Callable, Generic, NoReturn, TypeVar, overload
 
-from typing_extensions import Literal, TypeGuard, dataclass_transform
+from rez.vendor.typing_extensions.typing_extensions import Literal, TypeGuard, dataclass_transform
 
 from ._internal import _config, _decorators, _typing_extra
 from ._internal import _dataclasses as _pydantic_dataclasses

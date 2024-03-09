@@ -10,7 +10,7 @@ from functools import partial
 from types import GetSetDescriptorType
 from typing import TYPE_CHECKING, Any, ForwardRef
 
-from typing_extensions import Annotated, Final, Literal, TypeAliasType, TypeGuard, get_args, get_origin
+from rez.vendor.typing_extensions.typing_extensions import Annotated, Final, Literal, TypeAliasType, TypeGuard, get_args, get_origin
 
 if TYPE_CHECKING:
     from ._dataclasses import StandardDataclass
@@ -31,7 +31,7 @@ else:
 
 
 if sys.version_info < (3, 11):
-    from typing_extensions import NotRequired, Required
+    from rez.vendor.typing_extensions.typing_extensions import NotRequired, Required
 else:
     from typing import NotRequired, Required  # noqa: F401
 

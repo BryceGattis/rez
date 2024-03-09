@@ -14,7 +14,7 @@ from .main import BaseModel, _object_setattr
 if typing.TYPE_CHECKING:
     from typing import Any
 
-    from typing_extensions import Literal
+    from rez.vendor.typing_extensions.typing_extensions import Literal
 
     Model = typing.TypeVar('Model', bound='BaseModel')
 

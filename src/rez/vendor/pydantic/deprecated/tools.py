@@ -4,7 +4,7 @@ import json
 import warnings
 from typing import TYPE_CHECKING, Any, Callable, Type, TypeVar, Union
 
-from typing_extensions import deprecated
+from rez.vendor.typing_extensions.typing_extensions import deprecated
 
 from ..json_schema import DEFAULT_REF_TEMPLATE, GenerateJsonSchema
 from ..type_adapter import TypeAdapter

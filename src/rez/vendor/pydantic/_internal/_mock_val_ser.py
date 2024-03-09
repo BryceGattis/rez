@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Callable, Generic, TypeVar
 
 from pydantic_core import SchemaSerializer, SchemaValidator
-from typing_extensions import Literal
+from rez.vendor.typing_extensions.typing_extensions import Literal
 
 from ..errors import PydanticErrorCodes, PydanticUserError
 

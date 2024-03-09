@@ -13,7 +13,7 @@ from itertools import zip_longest
 from types import BuiltinFunctionType, CodeType, FunctionType, GeneratorType, LambdaType, ModuleType
 from typing import Any, TypeVar
 
-from typing_extensions import TypeAlias, TypeGuard
+from rez.vendor.typing_extensions.typing_extensions import TypeAlias, TypeGuard
 
 from . import _repr, _typing_extra
 

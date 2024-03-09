@@ -19,7 +19,7 @@ from warnings import warn
 import annotated_types
 import typing_extensions
 from pydantic_core import PydanticUndefined
-from typing_extensions import Literal, Unpack
+from rez.vendor.typing_extensions.typing_extensions import Literal, Unpack
 
 from . import types
 from ._internal import _decorators, _fields, _generics, _internal_dataclass, _repr, _typing_extra, _utils
@@ -268,7 +268,7 @@ class FieldInfo(_repr.Representation):
 
             ```python
             import annotated_types
-            from typing_extensions import Annotated
+            from rez.vendor.typing_extensions.typing_extensions import Annotated
 
             import pydantic
 
@@ -319,7 +319,7 @@ class FieldInfo(_repr.Representation):
         Example:
             ```python
             import annotated_types
-            from typing_extensions import Annotated
+            from rez.vendor.typing_extensions.typing_extensions import Annotated
 
             import pydantic
 

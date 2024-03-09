@@ -4,7 +4,7 @@ import sys
 import warnings
 from typing import TYPE_CHECKING, Iterable
 
-from typing_extensions import Final
+from rez.vendor.typing_extensions.typing_extensions import Final
 
 if sys.version_info >= (3, 8):
     import importlib.metadata as importlib_metadata
