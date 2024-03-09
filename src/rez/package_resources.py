@@ -12,12 +12,19 @@ from rez.utils.filesystem import find_matching_symlink
 from rez.utils.formatting import PackageRequest
 from rez.exceptions import PackageMetadataError, ResourceError
 from rez.config import config, Config, create_config
+from rez.vendor.pydantic import BaseModel
+from rez.vendor.pydantic.functional_validators import AfterValidator
+
 from rez.version import Version
-from rez.vendor.schema.schema import Schema, SchemaError, Optional, Or, And, Use
+from rez.vendor.schema.schema import Schema, SchemaError, Or, And, Use
 
 from textwrap import dedent
 import os.path
 from hashlib import sha1
+import shutil
+from typing import List, Optional
+from typing_extensions import Annotated
+
 
 
 # package attributes created at release time
@@ -53,6 +60,9 @@ package_rex_keys = (
 # utility schemas
 # ------------------------------------------------------------------------------
 
+class HelpSchema(BaseModel):
+
+
 help_schema = Or(str,  # single help entry
                  [[str]])  # multiple help entries
 
@@ -75,6 +85,9 @@ late_requires_schema = Schema([
 
 # requirements of all package-related resources
 #
+class BaseResourceSchema(BaseModel):
+    name: str
+
 
 base_resource_schema_dict = {
     Required("name"): str
@@ -83,12 +96,20 @@ base_resource_schema_dict = {
 
 # package family
 #
+class PackageFamilySchema(BaseResourceSchema):
+    pass
 
 package_family_schema_dict = base_resource_schema_dict.copy()
 
 
 # schema common to both package and variant
 #
+
+class TestsSchema(BaseModel):
+    command: str | List[str]
+    requires: Optional[List[PackageRequest] | str]
+    run_on: Optional[List[str] | str]
+    on_variants: Optional[bool | PackageRequest | str]
 
 tests_schema = Schema({
     Optional(str): Or(
@@ -111,6 +132,58 @@ tests_schema = Schema({
         })
     )
 })
+
+class PackageBaseSchema(BaseResourceSchema):
+    # basics
+    base: Optional[str]
+    version: Optional[Version]
+    description: Optional[str]
+    authors: Optional[List[str]]
+
+    # dependencies
+    requires: Optional[List[PackageRequest] | SourceCode]
+    build_requires: List[PackageRequest] | SourceCode
+    private_build_requires: List[PackageRequest] | SourceCode
+
+    # plugins
+    has_plugins: bool | SourceCode
+    plugin_for: List[str] | SourceCode
+
+    # general
+    uuid: str
+    config: Config
+    tools: List[str] | SourceCode
+    help: str | List[str] | SourceCode
+
+    # build related
+    hashed_variants: Optional[bool]
+
+    # relocatability
+    relocatable: Optional[bool | None | SourceCode]
+    cachable: Optional[bool | None | SourceCode]
+
+    # testing
+    tests: Optional[TestsSchema | SourceCode]
+
+    # commands
+    pre_commands: Optional[SourceCode]
+    commands: Optional[SourceCode]
+    post_commands: Optional[SourceCode]
+    pre_build_commands: Optional[SourceCode]
+    pre_test_commands: Optional[SourceCode]
+
+    # release info
+    timestamp: Optional[int]
+    revision: Optional[object]
+    changelog: Optional[str]
+    release_message: Optional[None | str]
+    previous_version: Optional[Version]
+    previous_revision: Optional[object]
+    vcs: Optional[str]
+
+    # arbitrary fields
+    Optional(str):               late_bound(object)
+
 
 package_base_schema_dict = base_resource_schema_dict.copy()
 package_base_schema_dict.update({
@@ -165,6 +238,8 @@ package_base_schema_dict.update({
     Optional(str):               late_bound(object)
 })
 
+class PackageSchema(PackageBaseSchema):
+    variants: Optional[List[List[PackageRequest]]]
 
 # package
 package_schema_dict = package_base_schema_dict.copy()
@@ -172,6 +247,9 @@ package_schema_dict.update({
     # deliberately not possible to late bind
     Optional("variants"):               [[PackageRequest]]
 })
+
+class VariantSchema(PackageBaseSchema):
+    pass
 
 
 # variant
@@ -195,6 +273,12 @@ variant_schema = Schema(variant_schema_dict)
 # schemas for converting from POD datatypes
 # ------------------------------------------------------------------------------
 
+_commands_schema = (SourceCode # commands as converted function
+                    | callable # commands as function
+                    | str # commands in text block
+                    | List[str]) # old-style (rez-1) commands
+
+
 _commands_schema = Or(SourceCode,       # commands as converted function
                       callable,         # commands as function
                       str,       # commands in text block
@@ -207,6 +291,52 @@ _package_request_schema = And(str, Use(PackageRequest))
 package_pod_schema_dict = base_resource_schema_dict.copy()
 
 large_string_dict = And(str, Use(lambda x: dedent(x).strip()))
+
+class PackagePodSchema(BaseResourceSchema):
+    base: Optional[str]
+    version: Optional[Annotated[str, AfterValidator(Version)]]
+    description: Optional[large_string_dict]
+    authors: Optional[List[str]]
+
+    requires: _package_request_schema | SourceCode
+    build_requires: _package_request_schema | SourceCode
+    private_build_requires: _package_request_schema | SourceCode
+
+    # deliberately not possible to late bind
+    variants: Optional[List[List[_package_request_schema]]]
+
+    has_plugins: Optional[bool | SourceCode]
+    plugin_for: Optional[List[str] | SourceCode]
+
+    uuid: Optional[str]
+    config: Optional[And(dict, Use(lambda x: create_config(overrides=x)))]
+    Optional('tools'):                  late_bound([str]),
+    Optional('help'):                   late_bound(help_schema),
+
+    Optional('hashed_variants'):        bool,
+
+    Optional('relocatable'):            late_bound(Or(None, bool)),
+    Optional('cachable'):               late_bound(Or(None, bool)),
+
+    Optional('tests'):                  late_bound(tests_schema),
+
+    Optional('pre_commands'):           _commands_schema,
+    Optional('commands'):               _commands_schema,
+    Optional('post_commands'):          _commands_schema,
+    Optional('pre_build_commands'):     _commands_schema,
+    Optional('pre_test_commands'):      _commands_schema,
+
+    Optional("timestamp"):              int,
+    Optional('revision'):               object,
+    Optional('changelog'):              large_string_dict,
+    Optional('release_message'):        Or(None, str),
+    Optional('previous_version'):       And(str, Use(Version)),
+    Optional('previous_revision'):      object,
+    Optional('vcs'):                    str,
+
+    # arbitrary keys
+    Optional(str):               late_bound(object)
+
 
 
 package_pod_schema_dict.update({
@@ -302,6 +432,11 @@ class PackageRepositoryResource(Resource):
         uniquely identifies this resource.
         """
         raise NotImplementedError
+
+    def install(self, location):
+        """Install resource to a location.
+        """
+        shutil.copytree(self.root, location)
 
 
 class PackageFamilyResource(PackageRepositoryResource):
