@@ -17,7 +17,7 @@ from ipaddress import IPv4Address, IPv4Interface, IPv4Network, IPv6Address, IPv6
 from typing import Any, Callable, Iterable, TypeVar
 
 import typing_extensions
-from pydantic_core import (
+from rez.vendor.pydantic_core import (
     CoreSchema,
     MultiHostUrl,
     PydanticCustomError,

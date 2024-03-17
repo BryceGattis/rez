@@ -8,9 +8,9 @@ import warnings
 from copy import copy, deepcopy
 from typing import Any, ClassVar
 
-import pydantic_core
+import rez.vendor.pydantic_core
 import typing_extensions
-from pydantic_core import PydanticUndefined
+from rez.vendor.pydantic_core import PydanticUndefined
 
 from ._internal import (
     _config,
@@ -35,7 +35,7 @@ if typing.TYPE_CHECKING:
     from inspect import Signature
     from pathlib import Path
 
-    from pydantic_core import CoreSchema, SchemaSerializer, SchemaValidator
+    from rez.vendor.pydantic_core import CoreSchema, SchemaSerializer, SchemaValidator
     from rez.vendor.typing_extensions.typing_extensions import Literal, Unpack
 
     from ._internal._utils import AbstractSetIntStr, MappingIntStrAny

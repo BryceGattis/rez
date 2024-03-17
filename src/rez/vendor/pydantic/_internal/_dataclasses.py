@@ -9,7 +9,7 @@ from functools import partial, wraps
 from inspect import Parameter, Signature
 from typing import Any, Callable, ClassVar
 
-from pydantic_core import (
+from rez.vendor.pydantic_core import (
     ArgsKwargs,
     PydanticUndefined,
     SchemaSerializer,

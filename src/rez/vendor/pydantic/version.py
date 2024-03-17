@@ -21,7 +21,7 @@ def version_info() -> str:
     import sys
     from pathlib import Path
 
-    import pydantic_core._pydantic_core as pdc
+    import rez.vendor.pydantic_core._pydantic_core as pdc
 
     if sys.version_info >= (3, 8):
         import importlib.metadata as importlib_metadata

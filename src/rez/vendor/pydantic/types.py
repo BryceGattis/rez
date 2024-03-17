@@ -29,7 +29,7 @@ from uuid import UUID
 
 import annotated_types
 from annotated_types import BaseMetadata, MaxLen, MinLen
-from pydantic_core import CoreSchema, PydanticCustomError, core_schema
+from rez.vendor.pydantic_core import CoreSchema, PydanticCustomError, core_schema
 from rez.vendor.typing_extensions.typing_extensions import Annotated, Literal, Protocol, TypeAlias, TypeAliasType, deprecated
 
 from ._internal import (

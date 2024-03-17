@@ -184,6 +184,19 @@ https://github.com/pydantic/pydantic<br>
 
 <!-- ######################################################### -->
 <tr><td>
+pydantic-core
+</td><td>
+2.14.6 (Dec 21, 2023)
+</td><td>
+MIT
+</td><td>
+https://github.com/pydantic/pydantic-core<br>
+
+* No changes from source.
+</td></tr>
+
+<!-- ######################################################### -->
+<tr><td>
 pydot
 </td><td>
 1.4.2.dev0 (Oct 28, 2020)

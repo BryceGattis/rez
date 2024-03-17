@@ -6,7 +6,7 @@ import re
 from ipaddress import IPv4Address, IPv4Interface, IPv4Network, IPv6Address, IPv6Interface, IPv6Network
 from typing import TYPE_CHECKING, Any
 
-from pydantic_core import MultiHostUrl, PydanticCustomError, Url, core_schema
+from rez.vendor.pydantic_core import MultiHostUrl, PydanticCustomError, Url, core_schema
 from rez.vendor.typing_extensions.typing_extensions import Annotated, TypeAlias
 
 from ._internal import _fields, _repr, _schema_generation_shared

@@ -16,7 +16,7 @@ import re
 from colorsys import hls_to_rgb, rgb_to_hls
 from typing import Any, Callable, Optional, Tuple, Type, Union, cast
 
-from pydantic_core import CoreSchema, PydanticCustomError, core_schema
+from rez.vendor.pydantic_core import CoreSchema, PydanticCustomError, core_schema
 from rez.vendor.typing_extensions.typing_extensions import deprecated
 
 from ._internal import _repr

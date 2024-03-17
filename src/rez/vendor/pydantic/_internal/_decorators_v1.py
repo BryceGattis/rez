@@ -4,7 +4,7 @@ from __future__ import annotations as _annotations
 from inspect import Parameter, signature
 from typing import Any, Dict, Tuple, Union, cast
 
-from pydantic_core import core_schema
+from rez.vendor.pydantic_core import core_schema
 from rez.vendor.typing_extensions.typing_extensions import Protocol
 
 from ..errors import PydanticUserError

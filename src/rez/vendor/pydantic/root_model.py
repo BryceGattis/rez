@@ -5,7 +5,7 @@ from __future__ import annotations as _annotations
 import typing
 from copy import copy, deepcopy
 
-from pydantic_core import PydanticUndefined
+from rez.vendor.pydantic_core import PydanticUndefined
 
 from . import PydanticUserError
 from ._internal import _repr

@@ -3,7 +3,7 @@ from __future__ import annotations as _annotations
 
 from typing import TYPE_CHECKING, Any, Union
 
-from pydantic_core import core_schema
+from rez.vendor.pydantic_core import core_schema
 
 if TYPE_CHECKING:
     from .json_schema import JsonSchemaMode, JsonSchemaValue

@@ -10,7 +10,7 @@ from types import FunctionType
 from typing import Any, Callable, Generic, Mapping
 
 import typing_extensions
-from pydantic_core import PydanticUndefined, SchemaSerializer
+from rez.vendor.pydantic_core import PydanticUndefined, SchemaSerializer
 from rez.vendor.typing_extensions.typing_extensions import dataclass_transform, deprecated
 
 from ..errors import PydanticUndefinedAnnotation, PydanticUserError

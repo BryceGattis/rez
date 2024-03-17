@@ -8,8 +8,8 @@ from functools import partialmethod
 from types import FunctionType
 from typing import TYPE_CHECKING, Any, Callable, TypeVar, Union, cast, overload
 
-from pydantic_core import core_schema
-from pydantic_core import core_schema as _core_schema
+from rez.vendor.pydantic_core import core_schema
+from rez.vendor.pydantic_core import core_schema as _core_schema
 from rez.vendor.typing_extensions.typing_extensions import Annotated, Literal, TypeAlias
 
 from . import GetCoreSchemaHandler as _GetCoreSchemaHandler

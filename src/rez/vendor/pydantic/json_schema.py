@@ -35,9 +35,9 @@ from typing import (
     cast,
 )
 
-import pydantic_core
-from pydantic_core import CoreSchema, PydanticOmit, core_schema, to_jsonable_python
-from pydantic_core.core_schema import ComputedField
+import rez.vendor.pydantic_core
+from rez.vendor.pydantic_core import CoreSchema, PydanticOmit, core_schema, to_jsonable_python
+from rez.vendor.pydantic_core.core_schema import ComputedField
 from rez.vendor.typing_extensions.typing_extensions import Annotated, Literal, TypeAlias, assert_never
 
 from ._internal import (

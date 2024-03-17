@@ -8,7 +8,7 @@ from inspect import Parameter, Signature, isdatadescriptor, ismethoddescriptor, 
 from itertools import islice
 from typing import TYPE_CHECKING, Any, Callable, ClassVar, Generic, Iterable, TypeVar, Union
 
-from pydantic_core import PydanticUndefined, core_schema
+from rez.vendor.pydantic_core import PydanticUndefined, core_schema
 from rez.vendor.typing_extensions.typing_extensions import Literal, TypeAlias, is_typeddict
 
 from ..errors import PydanticUserError

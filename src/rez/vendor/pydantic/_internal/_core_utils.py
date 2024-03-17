@@ -11,8 +11,8 @@ from typing import (
     cast,
 )
 
-from pydantic_core import CoreSchema, core_schema
-from pydantic_core import validate_core_schema as _validate_core_schema
+from rez.vendor.pydantic_core import CoreSchema, core_schema
+from rez.vendor.pydantic_core import validate_core_schema as _validate_core_schema
 from rez.vendor.typing_extensions.typing_extensions import TypeAliasType, TypeGuard, get_args, get_origin
 
 from . import _repr

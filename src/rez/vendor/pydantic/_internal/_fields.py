@@ -8,7 +8,7 @@ from copy import copy
 from functools import lru_cache
 from typing import TYPE_CHECKING, Any
 
-from pydantic_core import PydanticUndefined
+from rez.vendor.pydantic_core import PydanticUndefined
 
 from . import _typing_extra
 from ._config import ConfigWrapper

@@ -18,7 +18,7 @@ from warnings import warn
 
 import annotated_types
 import typing_extensions
-from pydantic_core import PydanticUndefined
+from rez.vendor.pydantic_core import PydanticUndefined
 from rez.vendor.typing_extensions.typing_extensions import Literal, Unpack
 
 from . import types

@@ -2,7 +2,7 @@ from __future__ import annotations as _annotations
 
 from typing import TYPE_CHECKING, Any, Hashable, Sequence
 
-from pydantic_core import CoreSchema, core_schema
+from rez.vendor.pydantic_core import CoreSchema, core_schema
 
 from ..errors import PydanticUserError
 from . import _core_utils

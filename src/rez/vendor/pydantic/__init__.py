@@ -6,8 +6,8 @@ from .version import VERSION
 if typing.TYPE_CHECKING:
     # import of virtually everything is supported via `__getattr__` below,
     # but we need them here for type checking and IDE support
-    import pydantic_core
-    from pydantic_core.core_schema import (
+    import rez.vendor.pydantic_core
+    from rez.vendor.pydantic_core.core_schema import (
         FieldSerializationInfo,
         SerializationInfo,
         SerializerFunctionWrapHandler,

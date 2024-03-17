@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from functools import partial
 from typing import Any, Awaitable, Callable
 
-import pydantic_core
+import rez.vendor.pydantic_core
 
 from ..config import ConfigDict
 from ..plugin._schema_validator import create_schema_validator

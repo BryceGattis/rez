@@ -4,7 +4,7 @@ from __future__ import annotations
 import functools
 from typing import TYPE_CHECKING, Any, Callable, Iterable, TypeVar
 
-from pydantic_core import CoreConfig, CoreSchema, SchemaValidator, ValidationError
+from rez.vendor.pydantic_core import CoreConfig, CoreSchema, SchemaValidator, ValidationError
 from rez.vendor.typing_extensions.typing_extensions import Literal, ParamSpec
 
 if TYPE_CHECKING:

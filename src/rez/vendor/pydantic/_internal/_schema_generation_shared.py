@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Callable
 
-from pydantic_core import core_schema
+from rez.vendor.pydantic_core import core_schema
 from rez.vendor.typing_extensions.typing_extensions import Literal
 
 from ..annotated_handlers import GetCoreSchemaHandler, GetJsonSchemaHandler
